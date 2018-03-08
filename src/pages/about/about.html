@@ -1,11 +1,31 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      About
-    </ion-title>
-  </ion-navbar>
-</ion-header>
+    <ion-navbar>
+      <ion-title>User List</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content>
+    <!-- <ion-item>
+      <ion-icon name="calendar" item-start></ion-icon>
+      <ion-label>Year</ion-label>
+      <ion-datetime displayFormat="YYYY" max="2050" [(ngModel)]="yearPay"></ion-datetime>
+    </ion-item>
+    <button ion-button (click)="newYear()">New Year</button> -->
+      
 
-<ion-content padding>
-
-</ion-content>
+    <ion-list>
+      <ion-item-sliding *ngFor="let user of users | async">
+        <button ion-item (click)="userTapped($event, user)">
+          <ion-avatar item-start>
+            <img *ngIf="user.imageUrl" [src]="user.imageUrl" />
+          </ion-avatar>
+          <h2>{{user.displayName}}</h2>
+        </button>
+        <ion-item-options>
+          <button ion-button clear small color="secondary" icon-left (click)="userEdit(user)">
+            <ion-icon name='create'></ion-icon>
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  </ion-content>
