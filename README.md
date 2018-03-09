@@ -93,7 +93,7 @@ _Note: You may need to add “sudo” in front of any global commands to install
 
 ## GoogleMap API
 * Add the followings on src/idex.html
-* `<script src="http://maps.google.com/maps/api/js?key=AIzaSyBlDnygKRVnArrhk2YrrL2kC42kv-8PNW4"></script>`
+* `<script src="http://maps.google.com/maps/api/js?key=<your key>"></script>`
 * `<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>`
 
 

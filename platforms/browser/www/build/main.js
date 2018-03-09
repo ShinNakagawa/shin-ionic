@@ -255,171 +255,6 @@ var StoragePage = (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BoxPlacePage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_three__ = __webpack_require__(385);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var BoxPlacePage = (function () {
-    function BoxPlacePage() {
-        this.renderer = new __WEBPACK_IMPORTED_MODULE_1_three__["p" /* WebGLRenderer */]({ antialias: true });
-        this.camera = null;
-        this.scene = null;
-        this.plane = null;
-        this.cube = null;
-        this.mouse = null;
-        this.raycaster = null;
-        this.isShiftDown = false;
-        this.rollOverMesh = null;
-        this.rollOverMaterial = null;
-        this.cubeGeo = null;
-        this.cubeMaterial = null;
-        this.objects = [];
-        this.camera = new __WEBPACK_IMPORTED_MODULE_1_three__["i" /* PerspectiveCamera */](45, window.innerWidth / window.innerHeight, 1, 10000);
-        this.camera.position.set(500, 800, 1300);
-        this.camera.lookAt(new __WEBPACK_IMPORTED_MODULE_1_three__["o" /* Vector3 */]());
-        this.scene = new __WEBPACK_IMPORTED_MODULE_1_three__["l" /* Scene */]();
-        this.scene.background = new __WEBPACK_IMPORTED_MODULE_1_three__["c" /* Color */](0xf0f0f0);
-        // roll-over helpers
-        var rollOverGeo = new __WEBPACK_IMPORTED_MODULE_1_three__["b" /* BoxGeometry */](50, 50, 50);
-        this.rollOverMaterial = new __WEBPACK_IMPORTED_MODULE_1_three__["g" /* MeshBasicMaterial */]({ color: 0xff0000, opacity: 0.5, transparent: true });
-        this.rollOverMesh = new __WEBPACK_IMPORTED_MODULE_1_three__["f" /* Mesh */](rollOverGeo, this.rollOverMaterial);
-        this.scene.add(this.rollOverMesh);
-        // cubes
-        this.cubeGeo = new __WEBPACK_IMPORTED_MODULE_1_three__["b" /* BoxGeometry */](50, 50, 50);
-        this.cubeMaterial = new __WEBPACK_IMPORTED_MODULE_1_three__["h" /* MeshLambertMaterial */]({
-            color: 0xfeb74c, map: new __WEBPACK_IMPORTED_MODULE_1_three__["m" /* TextureLoader */]().load('assets/img/square-outline-textured.png')
-        });
-        // grid
-        var gridHelper = new __WEBPACK_IMPORTED_MODULE_1_three__["e" /* GridHelper */](1000, 20);
-        this.scene.add(gridHelper);
-        //
-        this.raycaster = new __WEBPACK_IMPORTED_MODULE_1_three__["k" /* Raycaster */]();
-        this.mouse = new __WEBPACK_IMPORTED_MODULE_1_three__["n" /* Vector2 */]();
-        var geometry = new __WEBPACK_IMPORTED_MODULE_1_three__["j" /* PlaneBufferGeometry */](1000, 1000);
-        geometry.rotateX(-Math.PI / 2);
-        this.plane = new __WEBPACK_IMPORTED_MODULE_1_three__["f" /* Mesh */](geometry, new __WEBPACK_IMPORTED_MODULE_1_three__["g" /* MeshBasicMaterial */]({ visible: false }));
-        this.scene.add(this.plane);
-        this.objects.push(this.plane);
-        // Lights
-        var ambientLight = new __WEBPACK_IMPORTED_MODULE_1_three__["a" /* AmbientLight */](0x606060);
-        this.scene.add(ambientLight);
-        var directionalLight = new __WEBPACK_IMPORTED_MODULE_1_three__["d" /* DirectionalLight */](0xffffff);
-        directionalLight.position.set(1, 0.75, 0.5).normalize();
-        this.scene.add(directionalLight);
-    }
-    BoxPlacePage.prototype.ngAfterViewInit = function () {
-        var _this = this;
-        this.renderer.setPixelRatio(window.devicePixelRatio);
-        this.renderer.setSize(window.innerWidth, window.innerHeight);
-        this.rendererContainer.nativeElement.appendChild(this.renderer.domElement);
-        // Add Event Listeners
-        this.rendererContainer.nativeElement.addEventListener('mousemove', function (event) {
-            _this.onMouseMove(event);
-        });
-        this.rendererContainer.nativeElement.addEventListener('mousedown', function (event) {
-            _this.onMouseDown(event);
-        });
-        this.rendererContainer.nativeElement.addEventListener('keydown', function (event) {
-            _this.onKeyDown(event);
-        });
-        this.rendererContainer.nativeElement.addEventListener('keyup', function (event) {
-            _this.onKeyUp(event);
-        });
-        window.addEventListener('resize', function () {
-            _this.onWindowResize();
-        });
-        this.render();
-    };
-    BoxPlacePage.prototype.onWindowResize = function () {
-        this.camera.aspect = window.innerWidth / window.innerHeight;
-        this.camera.updateProjectionMatrix();
-        this.renderer.setSize(window.innerWidth, window.innerHeight);
-    };
-    BoxPlacePage.prototype.onMouseMove = function (event) {
-        event.preventDefault();
-        this.mouse.set((event.clientX / window.innerWidth) * 2 - 1, -(event.clientY / window.innerHeight) * 2 + 1);
-        this.raycaster.setFromCamera(this.mouse, this.camera);
-        var intersects = this.raycaster.intersectObjects(this.objects);
-        if (intersects.length > 0) {
-            var intersect = intersects[0];
-            this.rollOverMesh.position.copy(intersect.point).add(intersect.face.normal);
-            this.rollOverMesh.position.divideScalar(50).floor().multiplyScalar(50).addScalar(25);
-        }
-        this.render();
-    };
-    BoxPlacePage.prototype.onMouseDown = function (event) {
-        event.preventDefault();
-        this.mouse.set((event.clientX / window.innerWidth) * 2 - 1, -(event.clientY / window.innerHeight) * 2 + 1);
-        this.raycaster.setFromCamera(this.mouse, this.camera);
-        var intersects = this.raycaster.intersectObjects(this.objects);
-        if (intersects.length > 0) {
-            var intersect = intersects[0];
-            // delete cube
-            if (this.isShiftDown) {
-                if (intersect.object !== this.plane) {
-                    this.scene.remove(intersect.object);
-                    this.objects.splice(this.objects.indexOf(intersect.object), 1);
-                }
-                // create cube
-            }
-            else {
-                var voxel = new __WEBPACK_IMPORTED_MODULE_1_three__["f" /* Mesh */](this.cubeGeo, this.cubeMaterial);
-                voxel.position.copy(intersect.point).add(intersect.face.normal);
-                voxel.position.divideScalar(50).floor().multiplyScalar(50).addScalar(25);
-                this.scene.add(voxel);
-                this.objects.push(voxel);
-            }
-            this.render();
-        }
-    };
-    BoxPlacePage.prototype.onKeyDown = function (event) {
-        switch (event.keyCode) {
-            case 16:
-                this.isShiftDown = true;
-                break;
-        }
-    };
-    BoxPlacePage.prototype.onKeyUp = function (event) {
-        switch (event.keyCode) {
-            case 16:
-                this.isShiftDown = false;
-                break;
-        }
-    };
-    BoxPlacePage.prototype.render = function () {
-        this.renderer.render(this.scene, this.camera);
-    };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('rendererContainer'),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */])
-    ], BoxPlacePage.prototype, "rendererContainer", void 0);
-    BoxPlacePage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-box-place',template:/*ion-inline-start:"E:\ionic\shin-ionic\src\pages\three1\box-place\box-place.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>ThreeJS Box Place</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <div #rendererContainer></div>\n</ion-content>'/*ion-inline-end:"E:\ionic\shin-ionic\src\pages\three1\box-place\box-place.html"*/
-        }),
-        __metadata("design:paramtypes", [])
-    ], BoxPlacePage);
-    return BoxPlacePage;
-}());
-
-//# sourceMappingURL=box-place.js.map
-
-/***/ }),
-
-/***/ 150:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BoxPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_three__ = __webpack_require__(385);
@@ -477,15 +312,15 @@ var BoxPage = (function () {
 
 /***/ }),
 
-/***/ 151:
+/***/ 150:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Three1Page; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__box_place_box_place__ = __webpack_require__(149);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__box_box__ = __webpack_require__(150);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__box_place_box_place__ = __webpack_require__(151);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__box_box__ = __webpack_require__(149);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -717,6 +552,171 @@ var Three1Page = (function () {
 
 /***/ }),
 
+/***/ 151:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BoxPlacePage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_three__ = __webpack_require__(385);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var BoxPlacePage = (function () {
+    function BoxPlacePage() {
+        this.renderer = new __WEBPACK_IMPORTED_MODULE_1_three__["p" /* WebGLRenderer */]({ antialias: true });
+        this.camera = null;
+        this.scene = null;
+        this.plane = null;
+        this.cube = null;
+        this.mouse = null;
+        this.raycaster = null;
+        this.isShiftDown = false;
+        this.rollOverMesh = null;
+        this.rollOverMaterial = null;
+        this.cubeGeo = null;
+        this.cubeMaterial = null;
+        this.objects = [];
+        this.camera = new __WEBPACK_IMPORTED_MODULE_1_three__["i" /* PerspectiveCamera */](45, window.innerWidth / window.innerHeight, 1, 10000);
+        this.camera.position.set(500, 800, 1300);
+        this.camera.lookAt(new __WEBPACK_IMPORTED_MODULE_1_three__["o" /* Vector3 */]());
+        this.scene = new __WEBPACK_IMPORTED_MODULE_1_three__["l" /* Scene */]();
+        this.scene.background = new __WEBPACK_IMPORTED_MODULE_1_three__["c" /* Color */](0xf0f0f0);
+        // roll-over helpers
+        var rollOverGeo = new __WEBPACK_IMPORTED_MODULE_1_three__["b" /* BoxGeometry */](50, 50, 50);
+        this.rollOverMaterial = new __WEBPACK_IMPORTED_MODULE_1_three__["g" /* MeshBasicMaterial */]({ color: 0xff0000, opacity: 0.5, transparent: true });
+        this.rollOverMesh = new __WEBPACK_IMPORTED_MODULE_1_three__["f" /* Mesh */](rollOverGeo, this.rollOverMaterial);
+        this.scene.add(this.rollOverMesh);
+        // cubes
+        this.cubeGeo = new __WEBPACK_IMPORTED_MODULE_1_three__["b" /* BoxGeometry */](50, 50, 50);
+        this.cubeMaterial = new __WEBPACK_IMPORTED_MODULE_1_three__["h" /* MeshLambertMaterial */]({
+            color: 0xfeb74c, map: new __WEBPACK_IMPORTED_MODULE_1_three__["m" /* TextureLoader */]().load('assets/img/square-outline-textured.png')
+        });
+        // grid
+        var gridHelper = new __WEBPACK_IMPORTED_MODULE_1_three__["e" /* GridHelper */](1000, 20);
+        this.scene.add(gridHelper);
+        //
+        this.raycaster = new __WEBPACK_IMPORTED_MODULE_1_three__["k" /* Raycaster */]();
+        this.mouse = new __WEBPACK_IMPORTED_MODULE_1_three__["n" /* Vector2 */]();
+        var geometry = new __WEBPACK_IMPORTED_MODULE_1_three__["j" /* PlaneBufferGeometry */](1000, 1000);
+        geometry.rotateX(-Math.PI / 2);
+        this.plane = new __WEBPACK_IMPORTED_MODULE_1_three__["f" /* Mesh */](geometry, new __WEBPACK_IMPORTED_MODULE_1_three__["g" /* MeshBasicMaterial */]({ visible: false }));
+        this.scene.add(this.plane);
+        this.objects.push(this.plane);
+        // Lights
+        var ambientLight = new __WEBPACK_IMPORTED_MODULE_1_three__["a" /* AmbientLight */](0x606060);
+        this.scene.add(ambientLight);
+        var directionalLight = new __WEBPACK_IMPORTED_MODULE_1_three__["d" /* DirectionalLight */](0xffffff);
+        directionalLight.position.set(1, 0.75, 0.5).normalize();
+        this.scene.add(directionalLight);
+    }
+    BoxPlacePage.prototype.ngAfterViewInit = function () {
+        var _this = this;
+        this.renderer.setPixelRatio(window.devicePixelRatio);
+        this.renderer.setSize(window.innerWidth, window.innerHeight);
+        this.rendererContainer.nativeElement.appendChild(this.renderer.domElement);
+        // Add Event Listeners
+        this.rendererContainer.nativeElement.addEventListener('mousemove', function (event) {
+            _this.onMouseMove(event);
+        });
+        this.rendererContainer.nativeElement.addEventListener('mousedown', function (event) {
+            _this.onMouseDown(event);
+        });
+        this.rendererContainer.nativeElement.addEventListener('keydown', function (event) {
+            _this.onKeyDown(event);
+        });
+        this.rendererContainer.nativeElement.addEventListener('keyup', function (event) {
+            _this.onKeyUp(event);
+        });
+        window.addEventListener('resize', function () {
+            _this.onWindowResize();
+        });
+        this.render();
+    };
+    BoxPlacePage.prototype.onWindowResize = function () {
+        this.camera.aspect = window.innerWidth / window.innerHeight;
+        this.camera.updateProjectionMatrix();
+        this.renderer.setSize(window.innerWidth, window.innerHeight);
+    };
+    BoxPlacePage.prototype.onMouseMove = function (event) {
+        event.preventDefault();
+        this.mouse.set((event.clientX / window.innerWidth) * 2 - 1, -(event.clientY / window.innerHeight) * 2 + 1);
+        this.raycaster.setFromCamera(this.mouse, this.camera);
+        var intersects = this.raycaster.intersectObjects(this.objects);
+        if (intersects.length > 0) {
+            var intersect = intersects[0];
+            this.rollOverMesh.position.copy(intersect.point).add(intersect.face.normal);
+            this.rollOverMesh.position.divideScalar(50).floor().multiplyScalar(50).addScalar(25);
+        }
+        this.render();
+    };
+    BoxPlacePage.prototype.onMouseDown = function (event) {
+        event.preventDefault();
+        this.mouse.set((event.clientX / window.innerWidth) * 2 - 1, -(event.clientY / window.innerHeight) * 2 + 1);
+        this.raycaster.setFromCamera(this.mouse, this.camera);
+        var intersects = this.raycaster.intersectObjects(this.objects);
+        if (intersects.length > 0) {
+            var intersect = intersects[0];
+            // delete cube
+            if (this.isShiftDown) {
+                if (intersect.object !== this.plane) {
+                    this.scene.remove(intersect.object);
+                    this.objects.splice(this.objects.indexOf(intersect.object), 1);
+                }
+                // create cube
+            }
+            else {
+                var voxel = new __WEBPACK_IMPORTED_MODULE_1_three__["f" /* Mesh */](this.cubeGeo, this.cubeMaterial);
+                voxel.position.copy(intersect.point).add(intersect.face.normal);
+                voxel.position.divideScalar(50).floor().multiplyScalar(50).addScalar(25);
+                this.scene.add(voxel);
+                this.objects.push(voxel);
+            }
+            this.render();
+        }
+    };
+    BoxPlacePage.prototype.onKeyDown = function (event) {
+        switch (event.keyCode) {
+            case 16:
+                this.isShiftDown = true;
+                break;
+        }
+    };
+    BoxPlacePage.prototype.onKeyUp = function (event) {
+        switch (event.keyCode) {
+            case 16:
+                this.isShiftDown = false;
+                break;
+        }
+    };
+    BoxPlacePage.prototype.render = function () {
+        this.renderer.render(this.scene, this.camera);
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('rendererContainer'),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */])
+    ], BoxPlacePage.prototype, "rendererContainer", void 0);
+    BoxPlacePage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-box-place',template:/*ion-inline-start:"E:\ionic\shin-ionic\src\pages\three1\box-place\box-place.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>ThreeJS Box Place</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <div #rendererContainer></div>\n</ion-content>'/*ion-inline-end:"E:\ionic\shin-ionic\src\pages\three1\box-place\box-place.html"*/
+        }),
+        __metadata("design:paramtypes", [])
+    ], BoxPlacePage);
+    return BoxPlacePage;
+}());
+
+//# sourceMappingURL=box-place.js.map
+
+/***/ }),
+
 /***/ 163:
 /***/ (function(module, exports) {
 
@@ -787,15 +787,15 @@ var map = {
 		14
 	],
 	"../pages/three1/box-place/box-place.module": [
-		631,
+		633,
 		13
 	],
 	"../pages/three1/box/box.module": [
-		632,
+		631,
 		12
 	],
 	"../pages/three1/three1.module": [
-		633,
+		632,
 		11
 	]
 };
@@ -825,7 +825,7 @@ module.exports = webpackAsyncContext;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__contact_contact__ = __webpack_require__(430);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__home_home__ = __webpack_require__(431);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__storage_storage__ = __webpack_require__(148);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__three1_three1__ = __webpack_require__(151);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__three1_three1__ = __webpack_require__(150);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1209,9 +1209,9 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(36);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(608);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_three1_box_box__ = __webpack_require__(150);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_three1_box_place_box_place__ = __webpack_require__(149);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_three1_three1__ = __webpack_require__(151);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_three1_box_box__ = __webpack_require__(149);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_three1_box_place_box_place__ = __webpack_require__(151);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_three1_three1__ = __webpack_require__(150);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_storage_storage__ = __webpack_require__(148);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_about_about__ = __webpack_require__(429);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_contact_contact__ = __webpack_require__(430);
@@ -1304,9 +1304,9 @@ var AppModule = (function () {
                         { loadChildren: '../pages/home/signup/signup.module#SignupPageModule', name: 'SignupPage', segment: 'signup', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/home/song/song.module#SongPageModule', name: 'SongPage', segment: 'song', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/storage/storage.module#StoragePageModule', name: 'StoragePage', segment: 'storage', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/three1/box-place/box-place.module#BoxPlacePageModule', name: 'BoxPlacePage', segment: 'box-place', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/three1/box/box.module#BoxPageModule', name: 'BoxPage', segment: 'box', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/three1/three1.module#Three1PageModule', name: 'Three1Page', segment: 'three1', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/three1/three1.module#Three1PageModule', name: 'Three1Page', segment: 'three1', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/three1/box-place/box-place.module#BoxPlacePageModule', name: 'BoxPlacePage', segment: 'box-place', priority: 'low', defaultHistory: [] }
                     ]
                 })
             ],
