@@ -11,7 +11,7 @@ import { AuthProvider } from './../../providers/auth/auth';
 export class HomePage {
   songs: Observable<any[]>;
   userid: string;
-  basePath = 'songs';
+  basePath = 'shin/songs';
 
   constructor(private modalCtrl: ModalController,
               private auth: AuthProvider,

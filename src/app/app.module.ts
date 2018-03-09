@@ -1,8 +1,9 @@
-import { NgModule, ErrorHandler } from '@angular/core';
+import { NgModule, ErrorHandler, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
+import { EventPage } from '../pages/contact/event/event';
 import { BoxPage } from '../pages/three1/box/box';
 import { BoxPlacePage } from '../pages/three1/box-place/box-place';
 import { Three1Page } from '../pages/three1/three1';
@@ -34,6 +35,8 @@ import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 import { YtProvider } from '../providers/yt/yt';
 //pipes
 import { MomentPipe } from '../pipes/moment/moment';
+//components
+import { FlashCardComponent } from '../components/flash-card/flash-card';
 
 @NgModule({
   declarations: [
@@ -46,7 +49,9 @@ import { MomentPipe } from '../pipes/moment/moment';
     Three1Page,
     BoxPage,
     BoxPlacePage,
-    MomentPipe
+    MomentPipe,
+    FlashCardComponent,
+    EventPage
   ],
   imports: [
     BrowserModule,
@@ -57,6 +62,7 @@ import { MomentPipe } from '../pipes/moment/moment';
     AngularFireModule.initializeApp(firebaseConfig),
     IonicModule.forRoot(MyApp)
   ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
@@ -67,6 +73,7 @@ import { MomentPipe } from '../pipes/moment/moment';
     Three1Page,
     BoxPage,
     BoxPlacePage,
+    EventPage,
     TabsPage
   ],
   providers: [
@@ -78,7 +85,8 @@ import { MomentPipe } from '../pipes/moment/moment';
     YtProvider
   ],
   exports: [
-    MomentPipe
+    MomentPipe,
+    FlashCardComponent
   ]
 })
 export class AppModule {}

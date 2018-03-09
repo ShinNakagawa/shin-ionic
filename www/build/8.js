@@ -1,14 +1,14 @@
 webpackJsonp([8],{
 
-/***/ 621:
+/***/ 623:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PayPageModule", function() { return PayPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NewYearPageModule", function() { return NewYearPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pay__ = __webpack_require__(636);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__newyear__ = __webpack_require__(638);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,39 +18,37 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var PayPageModule = (function () {
-    function PayPageModule() {
+var NewYearPageModule = (function () {
+    function NewYearPageModule() {
     }
-    PayPageModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
+    NewYearPageModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["J" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__pay__["a" /* PayPage */],
+                __WEBPACK_IMPORTED_MODULE_2__newyear__["a" /* NewYearPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__pay__["a" /* PayPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__newyear__["a" /* NewYearPage */]),
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_2__pay__["a" /* PayPage */]
+                __WEBPACK_IMPORTED_MODULE_2__newyear__["a" /* NewYearPage */]
             ]
         })
-    ], PayPageModule);
-    return PayPageModule;
+    ], NewYearPageModule);
+    return NewYearPageModule;
 }());
 
-//# sourceMappingURL=pay.module.js.map
+//# sourceMappingURL=newyear.module.js.map
 
 /***/ }),
 
-/***/ 636:
+/***/ 638:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PayPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NewYearPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_moment__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_moment__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -63,76 +61,65 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-var PayPage = (function () {
-    function PayPage(db, viewCtrl, navParams, alertCtrl) {
-        var _this = this;
-        this.db = db;
-        this.viewCtrl = viewCtrl;
+var NewYearPage = (function () {
+    function NewYearPage(navParams, viewCtrl, db, alertCtrl) {
         this.navParams = navParams;
+        this.viewCtrl = viewCtrl;
+        this.db = db;
         this.alertCtrl = alertCtrl;
-        this.payPath = 'pays';
-        this.user = navParams.get('user');
+        this.userPath = 'shin/users';
+        this.payPath = 'shin/pays';
         this.yearPay = navParams.get('yearPay');
-        this.months = this.db.list(this.payPath + "/" + this.yearPay + "/", function (ref) { return ref.orderByChild('userid').equalTo(_this.user.uid); }).valueChanges();
+        this.users = this.db.list(this.userPath + "/").valueChanges();
     }
-    PayPage.prototype.loadingData = function () {
-        var _this = this;
-        var data;
-        data = this.db.list(this.payPath + "/" + this.yearPay + "/", function (ref) { return ref.orderByChild('userid').equalTo(_this.user.uid); }).valueChanges();
-        this.months = data;
-        this.months.subscribe(function (res) {
-            console.log('res.length = ', res.length);
-        });
-        console.log('year=', this.yearPay);
-    };
-    PayPage.prototype.dismiss = function () {
+    NewYearPage.prototype.dismiss = function () {
         this.viewCtrl.dismiss();
     };
-    PayPage.prototype.clickStar = function (item) {
-        var date = __WEBPACK_IMPORTED_MODULE_3_moment___default()(new Date()).format('MMM Do YYYY');
-        if (item.date !== '') {
-            //delete payment record
-            var data = {
-                date: ''
-            };
-            this.db.object(this.payPath + "/" + this.yearPay + "/" + item.id + "/").update(data)
-                .catch(function (error) { return console.log(error); });
-            var alert_1 = this.alertCtrl.create({
-                title: 'pay',
-                message: 'delete pay date:',
-                buttons: ['OK']
+    NewYearPage.prototype.addPayList = function () {
+        var _this = this;
+        //add Pay data for a new year
+        this.users.subscribe(function (res) {
+            res.forEach(function (user) {
+                for (var i = 1; i <= 12; i++) {
+                    var data = {
+                        userid: user.uid,
+                        month: i,
+                        date: ''
+                    };
+                    var key = _this.db.list(_this.payPath + "/" + _this.yearPay + "/").push(data).key;
+                    var dataKey = {
+                        id: key
+                    };
+                    _this.db.object(_this.payPath + "/" + _this.yearPay + "/" + key + "/").update(dataKey)
+                        .catch(function (error) { return console.log(error); });
+                }
             });
-            alert_1.present();
-        }
-        else {
-            //update payment record
-            var data = {
-                date: date
-            };
-            this.db.object(this.payPath + "/" + this.yearPay + "/" + item.id + "/").update(data)
-                .catch(function (error) { return console.log(error); });
-            var alert_2 = this.alertCtrl.create({
-                title: 'pay',
-                message: 'update pay date:',
-                buttons: ['OK']
-            });
-            alert_2.present();
-        }
+        });
+        var alert = this.alertCtrl.create();
+        alert.setTitle('Add data');
+        alert.setMessage('Add pat list data');
+        alert.addButton({
+            text: 'Ok',
+            handler: function (data) {
+                console.log('finish adding data:');
+                _this.viewCtrl.dismiss();
+            }
+        });
+        alert.present();
     };
-    PayPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-pay',template:/*ion-inline-start:"E:\ionic\shin-ionic\src\pages\about\pay\pay.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>{{user.displayName}} : Pay List {{yearPay}}</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="dismiss()">\n        <ion-icon name=\'close\'></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <!-- <ion-item>\n    <ion-icon name="calendar" item-start></ion-icon>\n    <ion-label>Year</ion-label>\n    <ion-datetime displayFormat="YYYY" max="2050" [(ngModel)]="yearPay"></ion-datetime>\n  </ion-item> -->\n\n  <div>\n    <ion-grid>\n      <ion-row>\n        <ion-col>\n          <ion-avatar>\n            <img [src]="\'assets/img/LSTaiko.jpg\'" />\n          </ion-avatar>  \n          <ion-row><button ion-button full>Jan</button></ion-row>\n          <ion-row><button ion-button full>Feb</button></ion-row>\n          <ion-row><button ion-button full>Mar</button></ion-row>\n          <ion-row><button ion-button full>Apr</button></ion-row>\n          <ion-row><button ion-button full>May</button></ion-row>\n          <ion-row><button ion-button full>Jun</button></ion-row>\n          <ion-row><button ion-button full>Jul</button></ion-row>\n          <ion-row><button ion-button full>Aug</button></ion-row>\n          <ion-row><button ion-button full>Sep</button></ion-row>\n          <ion-row><button ion-button full>Oct</button></ion-row>\n          <ion-row><button ion-button full>Nov</button></ion-row>\n          <ion-row><button ion-button full>Dec</button></ion-row>\n        </ion-col>      \n        <ion-col>\n          <ion-avatar>\n            <img [src]="user.imageUrl" />\n          </ion-avatar>\n          <ion-row *ngFor="let item of months | async">\n            <button ion-button [color]="item.date ? \'danger\' : \'light\'" full (click)="clickStar(item)">\n              <ion-icon name="star"> {{item.date}}</ion-icon>\n            </button>\n          </ion-row>\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"E:\ionic\shin-ionic\src\pages\about\pay\pay.html"*/
+    NewYearPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'page-newyear',template:/*ion-inline-start:"E:\ionic\shin-ionic\src\pages\about\newyear\newyear.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>Add Pay List {{yearPay}}</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="dismiss()">\n        <ion-icon name=\'close\'></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n    <button ion-button (click)="addPayList()">START</button>\n</ion-content>\n'/*ion-inline-end:"E:\ionic\shin-ionic\src\pages\about\newyear\newyear.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ViewController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
-    ], PayPage);
-    return PayPage;
+    ], NewYearPage);
+    return NewYearPage;
 }());
 
-//# sourceMappingURL=pay.js.map
+//# sourceMappingURL=newyear.js.map
 
 /***/ })
 

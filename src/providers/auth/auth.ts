@@ -8,7 +8,8 @@ import { Observable } from 'rxjs/Observable';
 export class AuthProvider {
   private user: Observable<firebase.User>;
   private authState: any;
-  
+  basePath = 'shin/users';
+
   constructor(
     private db: AngularFireDatabase,
     private af: AngularFireAuth) {
@@ -50,7 +51,7 @@ export class AuthProvider {
   }
 
   setUserData(email: string, displayName: string, imageUrl, status: string, uid: string): void {
-    const path = `users/${this.currentUserId}`;
+    const path = `${this.basePath}/${this.currentUserId}`;
     const data = {
       email: email,
       displayName: displayName,
@@ -64,7 +65,7 @@ export class AuthProvider {
   }
 
   setUserStatus(status: string): void {
-    const path = `users/${this.currentUserId}`;
+    const path = `${this.basePath}/${this.currentUserId}`;
     const data = {
       status: status
     };

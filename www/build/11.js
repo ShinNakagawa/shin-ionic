@@ -1,14 +1,15 @@
 webpackJsonp([11],{
 
-/***/ 633:
+/***/ 634:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Three1PageModule", function() { return Three1PageModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__three1__ = __webpack_require__(151);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BoxPageModule", function() { return BoxPageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__box__ = __webpack_require__(151);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_flash_card_flash_card__ = __webpack_require__(434);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,23 +19,28 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var Three1PageModule = (function () {
-    function Three1PageModule() {
+
+var BoxPageModule = (function () {
+    function BoxPageModule() {
     }
-    Three1PageModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
+    BoxPageModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["J" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__three1__["a" /* Three1Page */],
+                __WEBPACK_IMPORTED_MODULE_0__box__["a" /* BoxPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__three1__["a" /* Three1Page */]),
+                __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_0__box__["a" /* BoxPage */]),
+                __WEBPACK_IMPORTED_MODULE_3__components_flash_card_flash_card__["a" /* FlashCardComponent */]
             ],
+            exports: [
+                __WEBPACK_IMPORTED_MODULE_0__box__["a" /* BoxPage */]
+            ]
         })
-    ], Three1PageModule);
-    return Three1PageModule;
+    ], BoxPageModule);
+    return BoxPageModule;
 }());
 
-//# sourceMappingURL=three1.module.js.map
+//# sourceMappingURL=box.module.js.map
 
 /***/ })
 

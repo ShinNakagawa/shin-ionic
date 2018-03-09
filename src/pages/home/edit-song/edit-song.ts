@@ -17,7 +17,7 @@ export class EditSongPage {
   fullVideoID: AbstractControl;
   playListID: AbstractControl;
   song: Song;
-  basePath = 'songs';
+  basePath = 'shin/songs';
 
   constructor(
     public viewCtrl: ViewController, 

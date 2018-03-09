@@ -14,7 +14,7 @@ export class EditUserPage {
   displayName: AbstractControl;
   imageUrl: AbstractControl;
   user: User;
-  basePath = 'users';
+  basePath = 'shin/users';
 
   constructor(
     public viewCtrl: ViewController, 

@@ -11,7 +11,7 @@ import moment from 'moment';
 })
 export class PayPage {
   months: Observable<any[]>;
-  payPath = 'pays';
+  payPath = 'shin/pays';
   user: any;
   yearPay;
 

@@ -10,8 +10,8 @@ import { AngularFireDatabase } from 'angularfire2/database';
 })
 export class NewYearPage {
   users: Observable<any[]>;
-  userPath = 'users';
-  payPath = 'pays';
+  userPath = 'shin/users';
+  payPath = 'shin/pays';
   yearPay;
 
   constructor(public navParams: NavParams,

@@ -10,8 +10,8 @@ import moment from 'moment';
 })
 export class AboutPage {
   users: Observable<any[]>;
-  userPath = 'users';
-  payPath = 'pays';
+  userPath = 'shin/users';
+  payPath = 'shin/pays';
   yearPay;
 
   constructor(private db: AngularFireDatabase,

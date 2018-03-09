@@ -17,7 +17,7 @@ export class StoragePage {
   uploadItems: Observable<any[]>;
   files: FileList;
   upload: Upload;
-  private basePath = '/uploads';
+  private basePath = 'shin/uploads';
 
   constructor(public navCtrl: NavController,
     public loadingCtrl: LoadingController,

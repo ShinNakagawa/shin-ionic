@@ -17,7 +17,7 @@ export class Three1Page {
   map: any;
   drop: any;
 
-  constructor(private navCtrl: NavController,) {
+  constructor(private navCtrl: NavController) {
   }
 
   ionViewDidLoad() {

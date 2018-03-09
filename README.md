@@ -101,11 +101,24 @@ _Note: You may need to add “sudo” in front of any global commands to install
 * Run `npm install --save-dev three`
 * Run `npm install --save-dev @types/three`
 
+## Custom components[Flash Card]:
+1. create a new component.
+* Run `ionic g component flash-card`
+
+2. copy/paste all three files from previous project
+* `flash-card.html`, `flash-card.scss`, `flash-card.ts`
+
+3. edit app.module.ts to add this custom component
+* `import { FlashCardComponent } from '../components/flash-card/flash-card';`
+* add `FlashCardComponent` into `declarations:` and `exports:`
+* add `schemas: [ CUSTOM_ELEMENTS_SCHEMA ],` into `@NgModule`
+* edit `import { NgModule, ErrorHandler, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';`
+
 
 ## Database Structure of Firebase
 
 ```
-base-gallery/
+shin/
 |
 ├── events/               * Event Data
 │   ├── 2018              * 2018 events

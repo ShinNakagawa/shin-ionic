@@ -1,11 +1,6 @@
 <ion-header>
   <ion-navbar>
     <ion-title>Event Information</ion-title>
-    <ion-buttons end>
-      <button ion-button icon-only (click)="dismiss()">
-        <ion-icon name='close'></ion-icon>
-      </button>
-    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -19,5 +14,5 @@
       <p>Description: {{item.description}}</p>
     </ion-card-content>
   </ion-card>
-
+  <div #map id="map"></div>
 </ion-content>

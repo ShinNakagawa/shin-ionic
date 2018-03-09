@@ -25678,8 +25678,64 @@ ion-navbar.toolbar {
   min-height: calc(46px + env(safe-area-inset-bottom));
 }
 
+flash-card {
+  -webkit-perspective: 1000px;
+  perspective: 1000px;
+}
+
+flash-card .fc-container {
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+flash-card .fc-container.fc-back {
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
+flash-card .fc-container .front {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  padding: 20px;
+  background: #f2f2f2;
+  -webkit-transform: rotateY(0deg);
+  transform: rotateY(0deg);
+}
+
+flash-card .fc-container .back {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #f2f2f2;
+  padding: 20px;
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
+flash-card .fc-back .front {
+  z-index: 0;
+}
+
+flash-card .fc-back .back {
+  z-index: 2;
+}
+
 page-pay .col {
   border: thin solid black;
+}
+
+page-event #map {
+  width: 50%;
+  height: 50%;
 }
 
 page-login .scroll-content {
