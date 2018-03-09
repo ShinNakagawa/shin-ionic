@@ -13,9 +13,21 @@ export class EventPage {
   @ViewChild('map') mapElement: ElementRef;
   map: any;
   item: Event;
+  place = 'City hall';
+  latData = 52.130889;
+  lngData = -106.660233;
 
   constructor(public navParams: NavParams) {
     this.item = navParams.get('item');
+    let dataString = this.item.place;
+    let data = dataString.split(',');
+    if ( data[0] !== '' ) {
+      this.place = data[0];
+    }
+    if ( data[1] !== '' && data[2] !== '') {
+      this.latData = Number(data[1]);
+      this.lngData = Number(data[2]);
+    }
   }
 
   ionViewDidLoad() {
@@ -23,19 +35,7 @@ export class EventPage {
   }
 
   LoadMap(){
-    let dataString = this.item.place;
-    let data = dataString.split(',');
-    let placeName = 'City hall';
-    if ( data[0] !== '' ) {
-      placeName = data[0];
-    }
-    let latData = 52.130889;
-    let lngData = -106.660233;
-    if ( data[1] !== '' && data[2] !== '') {
-      latData = Number(data[1]);
-      lngData = Number(data[2]);
-    }
-    let latLng = new google.maps.LatLng(latData, lngData);
+    let latLng = new google.maps.LatLng(this.latData, this.lngData);
     let mapOptions = {
       center: latLng,
       zoom: 13,
@@ -46,7 +46,7 @@ export class EventPage {
     let marker = new google.maps.Marker({
       map: this.map,
       animation: google.maps.Animation.DROP,
-      title: placeName,
+      title: this.place,
       position: latLng
     });
     let infoWindow = new google.maps.InfoWindow({

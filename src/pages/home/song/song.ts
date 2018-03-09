@@ -38,5 +38,4 @@ export class SongPage {
     window.open('https://www.youtube.com/watch?v=' + video.snippet.resourceId.videoId);
   }
 
-
 }
