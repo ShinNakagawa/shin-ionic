@@ -114,6 +114,8 @@ _Note: You may need to add “sudo” in front of any global commands to install
 * add `schemas: [ CUSTOM_ELEMENTS_SCHEMA ],` into `@NgModule`
 * edit `import { NgModule, ErrorHandler, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';`
 
+## chart
+* Run `npm install --save chart.js`
 
 ## Database Structure of Firebase
 

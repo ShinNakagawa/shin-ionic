@@ -25733,6 +25733,14 @@ page-pay .col {
   border: thin solid black;
 }
 
+page-chart ion-card-header {
+  font-weight: bold;
+}
+
+page-chart .scroll-content {
+  background-color: #f4f4f4;
+}
+
 page-event #map {
   height: 50%;
 }
