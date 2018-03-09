@@ -92,9 +92,9 @@ _Note: You may need to add “sudo” in front of any global commands to install
 
 
 ## GoogleMap API
+* Get google map API key in `https://developers.google.com/maps/documentation/javascript/get-api-key`
 * Add the followings on src/idex.html
-* `<script src="http://maps.google.com/maps/api/js?key=<your key>"></script>`
-* `<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>`
+* `<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9onwG_XOn1wuvRh21oBa1c2dqM0ryTDg" type="text/javascript"></script>`
 
 
 ## ThreeJS
