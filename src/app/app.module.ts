@@ -3,10 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
+import { MapPage } from '../pages/map/map';
 import { ChartPage } from '../pages/chart/chart';
 import { EventPage } from '../pages/contact/event/event';
-import { BoxPage } from '../pages/three1/box/box';
-import { BoxPlacePage } from '../pages/three1/box-place/box-place';
+import { BoxPage } from '../pages/box/box';
+import { BoxPlacePage } from '../pages/box-place/box-place';
 import { Three1Page } from '../pages/three1/three1';
 import { StoragePage } from '../pages/storage/storage';
 import { AboutPage } from '../pages/about/about';
@@ -53,7 +54,8 @@ import { FlashCardComponent } from '../components/flash-card/flash-card';
     MomentPipe,
     FlashCardComponent,
     EventPage,
-    ChartPage
+    ChartPage,
+    MapPage
   ],
   imports: [
     BrowserModule,
@@ -77,7 +79,8 @@ import { FlashCardComponent } from '../components/flash-card/flash-card';
     BoxPlacePage,
     EventPage,
     TabsPage,
-    ChartPage
+    ChartPage,
+    MapPage
   ],
   providers: [
     StatusBar,

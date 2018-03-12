@@ -1,22 +1,11 @@
 <ion-header>
   <ion-navbar>
     <ion-title>Three and GoogleMap</ion-title>
-    <ion-buttons end>
-      <button ion-button icon-only (click)="box()">
-        <ion-icon name="add"></ion-icon>
-      </button>
-      <button ion-button icon-only (click)="boxPlace()">
-        <ion-icon name="list"></ion-icon>
-      </button>
-    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <button ion-button color="danger" (click)="ReadGeoJSON()">ReadGeoJSON</button>
-  <button ion-button color="danger" (click)="Rectangle()">Rectangle</button>
-  <button ion-button color="danger" (click)="getDirection()">Get the Direction</button>
-  <button ion-button color="light" (click)="getPolyline()">Get the Polyline</button>
-  <div #map id="map"></div>
-  <div #drop id="drop-container"><div id="drop-silhouette"></div></div>
+  <button ion-button full color="danger" (click)="goToMap()">GoogleMap</button>
+  <button ion-button full color="light" (click)="goToBox()">3DBox</button>
+  <button ion-button full color="secondary" (click)="goToBoxPlace()">BoxPlace</button>
 </ion-content>
