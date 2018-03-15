@@ -117,10 +117,6 @@ _Note: You may need to add “sudo” in front of any global commands to install
 ## chart
 * Run `npm install --save chart.js`
 
-## dat.GUI https://github.com/dataarts/dat.gui
-* Add `<script type="text/javascript" src="dat.gui.min.js"></script>`
-* Run `npm install --save dat.gui`
-
 ## Database Structure of Firebase
 
 ```

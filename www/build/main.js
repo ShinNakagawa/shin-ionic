@@ -289,68 +289,6 @@ var BoxPlacePage = (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BoxPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_three__ = __webpack_require__(387);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-//import { dat } from 'dat.gui';
-var BoxPage = (function () {
-    function BoxPage() {
-        this.renderer = new __WEBPACK_IMPORTED_MODULE_1_three__["p" /* WebGLRenderer */]();
-        this.scene = null;
-        this.camera = null;
-        this.mesh = null;
-        this.scene = new __WEBPACK_IMPORTED_MODULE_1_three__["l" /* Scene */]();
-        this.camera = new __WEBPACK_IMPORTED_MODULE_1_three__["i" /* PerspectiveCamera */](75, window.innerWidth / window.innerHeight, 1, 10000);
-        this.camera.position.z = 1000;
-        var geometry = new __WEBPACK_IMPORTED_MODULE_1_three__["b" /* BoxGeometry */](200, 200, 200);
-        var material = new __WEBPACK_IMPORTED_MODULE_1_three__["g" /* MeshBasicMaterial */]({ color: 0xff0000, wireframe: true });
-        this.mesh = new __WEBPACK_IMPORTED_MODULE_1_three__["f" /* Mesh */](geometry, material);
-        this.scene.add(this.mesh);
-    }
-    BoxPage.prototype.ngAfterViewInit = function () {
-        this.renderer.setSize(window.innerWidth, window.innerHeight);
-        this.rendererContainer.nativeElement.appendChild(this.renderer.domElement);
-        this.animate();
-    };
-    BoxPage.prototype.animate = function () {
-        var _this = this;
-        window.requestAnimationFrame(function () { return _this.animate(); });
-        this.mesh.rotation.x += 0.01;
-        this.mesh.rotation.y += 0.02;
-        this.renderer.render(this.scene, this.camera);
-    };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])('rendererContainer'),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* ElementRef */])
-    ], BoxPage.prototype, "rendererContainer", void 0);
-    BoxPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-box',template:/*ion-inline-start:"E:\ionic\shin-ionic\src\pages\box\box.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>ThreeJS Box</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <!-- <ion-card>\n      <div #rendererContainer></div>\n  </ion-card> -->\n\n  <flash-card>\n    <div class="fc-front">    \n      <h2 text-center>3D Model with Flash Card</h2>\n      <p>Description: 3D Model Rotation Animation Test</p>\n      <p>Start testing by clicking here</p>\n    </div>\n    <div class="fc-back">\n      <div #rendererContainer></div>\n    </div>\n  </flash-card>\n\n  <!-- <div #rendererContainer></div> -->\n</ion-content>'/*ion-inline-end:"E:\ionic\shin-ionic\src\pages\box\box.html"*/
-        }),
-        __metadata("design:paramtypes", [])
-    ], BoxPage);
-    return BoxPage;
-}());
-
-//# sourceMappingURL=box.js.map
-
-/***/ }),
-
-/***/ 157:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ChartPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_chart_js__ = __webpack_require__(577);
@@ -467,6 +405,67 @@ var ChartPage = (function () {
 }());
 
 //# sourceMappingURL=chart.js.map
+
+/***/ }),
+
+/***/ 157:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BoxPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_three__ = __webpack_require__(387);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var BoxPage = (function () {
+    function BoxPage() {
+        this.renderer = new __WEBPACK_IMPORTED_MODULE_1_three__["p" /* WebGLRenderer */]();
+        this.scene = null;
+        this.camera = null;
+        this.mesh = null;
+        this.scene = new __WEBPACK_IMPORTED_MODULE_1_three__["l" /* Scene */]();
+        this.camera = new __WEBPACK_IMPORTED_MODULE_1_three__["i" /* PerspectiveCamera */](75, window.innerWidth / window.innerHeight, 1, 10000);
+        this.camera.position.z = 1000;
+        var geometry = new __WEBPACK_IMPORTED_MODULE_1_three__["b" /* BoxGeometry */](200, 200, 200);
+        var material = new __WEBPACK_IMPORTED_MODULE_1_three__["g" /* MeshBasicMaterial */]({ color: 0xff0000, wireframe: true });
+        this.mesh = new __WEBPACK_IMPORTED_MODULE_1_three__["f" /* Mesh */](geometry, material);
+        this.scene.add(this.mesh);
+    }
+    BoxPage.prototype.ngAfterViewInit = function () {
+        this.renderer.setSize(window.innerWidth, window.innerHeight);
+        this.rendererContainer.nativeElement.appendChild(this.renderer.domElement);
+        this.animate();
+    };
+    BoxPage.prototype.animate = function () {
+        var _this = this;
+        window.requestAnimationFrame(function () { return _this.animate(); });
+        this.mesh.rotation.x += 0.01;
+        this.mesh.rotation.y += 0.02;
+        this.renderer.render(this.scene, this.camera);
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])('rendererContainer'),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* ElementRef */])
+    ], BoxPage.prototype, "rendererContainer", void 0);
+    BoxPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'page-box',template:/*ion-inline-start:"E:\ionic\shin-ionic\src\pages\box\box.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>ThreeJS Box</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <flash-card>\n    <div class="fc-front">    \n      <h2 text-center>3D Model with Flash Card</h2>\n      <p>Description: 3D Model Rotation Animation Test</p>\n      <p>Start testing by clicking here</p>\n    </div>\n    <div class="fc-back">\n      <div #rendererContainer></div>\n    </div>\n  </flash-card>\n\n  <!-- <div #rendererContainer></div> -->\n</ion-content>'/*ion-inline-end:"E:\ionic\shin-ionic\src\pages\box\box.html"*/
+        }),
+        __metadata("design:paramtypes", [])
+    ], BoxPage);
+    return BoxPage;
+}());
+
+//# sourceMappingURL=box.js.map
 
 /***/ }),
 
@@ -921,7 +920,7 @@ var StoragePage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__box_place_box_place__ = __webpack_require__(155);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__box_box__ = __webpack_require__(156);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__box_box__ = __webpack_require__(157);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__map_map__ = __webpack_require__(159);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -997,15 +996,15 @@ var map = {
 		15
 	],
 	"../pages/box/box.module": [
-		685,
+		687,
 		14
 	],
 	"../pages/chart/chart.module": [
-		686,
+		685,
 		13
 	],
 	"../pages/contact/create-event/create-event.module": [
-		687,
+		686,
 		6
 	],
 	"../pages/contact/edit-event/edit-event.module": [
@@ -1076,7 +1075,7 @@ module.exports = webpackAsyncContext;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__home_home__ = __webpack_require__(447);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__storage_storage__ = __webpack_require__(160);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__three1_three1__ = __webpack_require__(161);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__chart_chart__ = __webpack_require__(157);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__chart_chart__ = __webpack_require__(156);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1563,9 +1562,9 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(670);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_map_map__ = __webpack_require__(159);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_chart_chart__ = __webpack_require__(157);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_chart_chart__ = __webpack_require__(156);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_contact_event_event__ = __webpack_require__(158);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_box_box__ = __webpack_require__(156);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_box_box__ = __webpack_require__(157);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_box_place_box_place__ = __webpack_require__(155);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_three1_three1__ = __webpack_require__(161);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_storage_storage__ = __webpack_require__(160);
@@ -1661,9 +1660,9 @@ var AppModule = (function () {
                         { loadChildren: '../pages/about/edit-user/edit-user.module#EditUserPageModule', name: 'EditUserPage', segment: 'edit-user', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/about/pay/pay.module#PayPageModule', name: 'PayPage', segment: 'pay', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/box-place/box-place.module#BoxPlacePageModule', name: 'BoxPlacePage', segment: 'box-place', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/box/box.module#BoxPageModule', name: 'BoxPage', segment: 'box', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/chart/chart.module#ChartPageModule', name: 'ChartPage', segment: 'chart', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/contact/create-event/create-event.module#CreateEventPageModule', name: 'CreateEventPage', segment: 'create-event', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/box/box.module#BoxPageModule', name: 'BoxPage', segment: 'box', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/contact/edit-event/edit-event.module#EditEventPageModule', name: 'EditEventPage', segment: 'edit-event', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/contact/event/event.module#EventPageModule', name: 'EventPage', segment: 'event', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/home/create-song/create-song.module#CreateSongPageModule', name: 'CreateSongPage', segment: 'create-song', priority: 'low', defaultHistory: [] },

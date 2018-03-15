@@ -2,8 +2,6 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage } from 'ionic-angular';
 import * as THREE from 'three';
 
-//import { dat } from 'dat.gui';
-
 @IonicPage()
 @Component({
   selector: 'page-box',
@@ -40,13 +38,16 @@ export class BoxPage {
     this.renderer.render(this.scene, this.camera);
   }
 
-
+  // ## dat.GUI https://github.com/dataarts/dat.gui
+  // * Add `<script type="text/javascript" src="dat.gui.min.js"></script>`
+  // * Run `npm install --save dat.gui`
+  
+  // renderer = new THREE.WebGLRenderer( { antialias: true } );
 
   // container = null;
   // camera = null;
   // controls = null;
   // scene = null;
-  // renderer = null;
   // light = null;
   // pointLight = null;
 
@@ -87,7 +88,7 @@ export class BoxPage {
   //   this.scene.add( mesh1 );
 
   //   let sound1 = new THREE.PositionalAudio( listener );
-  //   audioLoader.load( 'sounds/358232_j_s_song.ogg', function( buffer ) {
+  //   audioLoader.load( 'assets/sounds/358232_j_s_song.ogg', function( buffer ) {
   //     sound1.setBuffer( buffer );
   //     sound1.setRefDistance( 20 );
   //     sound1.play();
@@ -100,7 +101,7 @@ export class BoxPage {
   //   this.scene.add( mesh2 );
 
   //   let sound2 = new THREE.PositionalAudio( listener );
-  //   audioLoader.load( 'sounds/376737_Skullbeatz___Bad_Cat_Maste.ogg', function( buffer ) {
+  //   audioLoader.load( 'assets/sounds/376737_Skullbeatz___Bad_Cat_Maste.ogg', function( buffer ) {
   //     sound2.setBuffer( buffer );
   //     sound2.setRefDistance( 20 );
   //     sound2.play();
@@ -117,7 +118,7 @@ export class BoxPage {
   //   oscillator.type = 'sine';
   //   oscillator.frequency.value = 144;
   //   oscillator.start(0);
-  //   //sound3.setNodeSource(oscillator);
+  //   sound3.setNodeSource(oscillator);
   //   sound3.setRefDistance( 20 );
   //   sound3.setVolume(0.5);
   //   mesh3.add(sound3);
@@ -129,7 +130,7 @@ export class BoxPage {
 
   //   // global ambient audio
   //   let sound4 = new THREE.Audio( listener );
-  //   audioLoader.load( 'sounds/Project_Utopia.ogg', function( buffer ) {
+  //   audioLoader.load( 'assets/sounds/Project_Utopia.ogg', function( buffer ) {
   //     sound4.setBuffer( buffer );
   //     sound4.setLoop(true);
   //     sound4.setVolume(0.5);
@@ -141,55 +142,54 @@ export class BoxPage {
   //   this.scene.add( helper );
 
   //   //
-  //   let SoundControls = function() {
-  //     this.master = listener.getMasterVolume();
-  //     this.firstSphere =  sound1.getVolume();
-  //     this.secondSphere =  sound2.getVolume();
-  //     this.thirdSphere = sound3.getVolume();
-  //     this.Ambient =  sound4.getVolume();
-  //   };
-  //   let GeneratorControls = function() {
-  //     this.frequency = oscillator.frequency.value;
-  //     this.wavetype = oscillator.type;
-  //   };
-  //   let gui = new dat.GUI();
-  //   let soundControls = new SoundControls();
-  //   let generatorControls = new GeneratorControls();
-  //   let volumeFolder = gui.addFolder('sound volume');
-  //   let generatorFolder = gui.addFolder('sound generator');
-  //   volumeFolder.add(soundControls, 'master').min(0.0).max(1.0).step(0.01).onChange(function() {
-  //     listener.setMasterVolume(soundControls.master);
-  //   });
-  //   volumeFolder.add(soundControls, 'firstSphere').min(0.0).max(1.0).step(0.01).onChange(function() {
-  //     sound1.setVolume(soundControls.firstSphere);
-  //   });
-  //   volumeFolder.add(soundControls, 'secondSphere').min(0.0).max(1.0).step(0.01).onChange(function() {
-  //     sound2.setVolume(soundControls.secondSphere);
-  //   });
+  //   // let SoundControls = function() {
+  //   //   this.master = listener.getMasterVolume();
+  //   //   this.firstSphere =  sound1.getVolume();
+  //   //   this.secondSphere =  sound2.getVolume();
+  //   //   this.thirdSphere = sound3.getVolume();
+  //   //   this.Ambient =  sound4.getVolume();
+  //   // };
+  //   // let GeneratorControls = function() {
+  //   //   this.frequency = oscillator.frequency.value;
+  //   //   this.wavetype = oscillator.type;
+  //   // };
+  //   //let gui = new dat.GUI();
+  //   //let soundControls = new SoundControls();
+  //   //let generatorControls = new GeneratorControls();
+  //   //let volumeFolder = gui.addFolder('sound volume');
+  //   //let generatorFolder = gui.addFolder('sound generator');
+  //   // volumeFolder.add(soundControls, 'master').min(0.0).max(1.0).step(0.01).onChange(function() {
+  //   //   listener.setMasterVolume(soundControls.master);
+  //   // });
+  //   // volumeFolder.add(soundControls, 'firstSphere').min(0.0).max(1.0).step(0.01).onChange(function() {
+  //   //   sound1.setVolume(soundControls.firstSphere);
+  //   // });
+  //   // volumeFolder.add(soundControls, 'secondSphere').min(0.0).max(1.0).step(0.01).onChange(function() {
+  //   //   sound2.setVolume(soundControls.secondSphere);
+  //   // });
 
-  //   volumeFolder.add(soundControls, 'thirdSphere').min(0.0).max(1.0).step(0.01).onChange(function() {
-  //     sound3.setVolume(soundControls.thirdSphere);
-  //   });
-  //   volumeFolder.add(soundControls, 'Ambient').min(0.0).max(1.0).step(0.01).onChange(function() {
-  //     sound4.setVolume(soundControls.Ambient);
-  //   });
-  //   volumeFolder.open();
-  //   generatorFolder.add(generatorControls, 'frequency').min(50.0).max(5000.0).step(1.0).onChange(function() {
-  //     oscillator.frequency.value = generatorControls.frequency;
-  //   });
-  //   generatorFolder.add(generatorControls, 'wavetype', ['sine', 'square', 'sawtooth', 'triangle']).onChange(function() {
-  //     oscillator.type = generatorControls.wavetype;
-  //   });
-  //   generatorFolder.open();
+  //   // volumeFolder.add(soundControls, 'thirdSphere').min(0.0).max(1.0).step(0.01).onChange(function() {
+  //   //   sound3.setVolume(soundControls.thirdSphere);
+  //   // });
+  //   // volumeFolder.add(soundControls, 'Ambient').min(0.0).max(1.0).step(0.01).onChange(function() {
+  //   //   sound4.setVolume(soundControls.Ambient);
+  //   // });
+  //   // volumeFolder.open();
+  //   // generatorFolder.add(generatorControls, 'frequency').min(50.0).max(5000.0).step(1.0).onChange(function() {
+  //   //   oscillator.frequency.value = generatorControls.frequency;
+  //   // });
+  //   // generatorFolder.add(generatorControls, 'wavetype', ['sine', 'square', 'sawtooth', 'triangle']).onChange(function() {
+  //   //   oscillator.type = generatorControls.wavetype;
+  //   // });
+  //   // generatorFolder.open();
+  // }
 
-
-  //   this.renderer = new THREE.WebGLRenderer( { antialias: true } );
+  // ngAfterViewInit() {
   //   this.renderer.setPixelRatio( window.devicePixelRatio );
   //   this.renderer.setSize( window.innerWidth, window.innerHeight );
   //   this.rendererContainer.nativeElement.appendChild(this.renderer.domElement);
   //   //
   //   this.controls = new THREE.FirstPersonControls( this.camera, this.renderer.domElement );
-
   //   this.controls.movementSpeed = 70;
   //   this.controls.lookSpeed = 0.05;
   //   this.controls.noFly = true;
