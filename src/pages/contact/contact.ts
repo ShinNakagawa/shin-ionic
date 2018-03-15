@@ -37,13 +37,6 @@ export class ContactPage {
 
   itemTapped(event, item) {
     this.navCtrl.push(EventPage, {item: item});
-    // let itemModel = this.modalCtrl.create('EventPage', {item: item}, { cssClass: 'inset-modal' });
-    // itemModel.onDidDismiss(data => {
-    //   if (data) {
-    //     //console.log("test1111");
-    //   }
-    // });
-    // itemModel.present();
   }
 
   editItem(item) {

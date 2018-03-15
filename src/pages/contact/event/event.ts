@@ -13,20 +13,26 @@ export class EventPage {
   @ViewChild('map') mapElement: ElementRef;
   map: any;
   item: Event;
-  place = 'City hall';
-  latData = 52.130889;
-  lngData = -106.660233;
+  place: string;
+  latData: number;
+  lngData: number;
 
   constructor(public navParams: NavParams) {
     this.item = navParams.get('item');
     let dataString = this.item.place;
-    let data = dataString.split(',');
-    if ( data[0] !== '' ) {
-      this.place = data[0];
-    }
-    if ( data[1] !== '' && data[2] !== '') {
-      this.latData = Number(data[1]);
-      this.lngData = Number(data[2]);
+    if ( dataString === null || dataString === undefined || dataString === '' ) {
+      this.place = 'City hall';
+      this.latData = 52.130889;
+      this.lngData = -106.660233;
+    } else {
+      let data = dataString.split(',');
+      if ( data[0] !== '' ) {
+        this.place = data[0];
+      }
+      if ( data[1] !== '' && data[2] !== '') {
+        this.latData = Number(data[1]);
+        this.lngData = Number(data[2]);
+      }
     }
   }
 

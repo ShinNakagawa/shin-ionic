@@ -1,4 +1,4 @@
-webpackJsonp([17],{
+webpackJsonp([16],{
 
 /***/ 154:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -289,6 +289,68 @@ var BoxPlacePage = (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BoxPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_three__ = __webpack_require__(387);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+//import { dat } from 'dat.gui';
+var BoxPage = (function () {
+    function BoxPage() {
+        this.renderer = new __WEBPACK_IMPORTED_MODULE_1_three__["p" /* WebGLRenderer */]();
+        this.scene = null;
+        this.camera = null;
+        this.mesh = null;
+        this.scene = new __WEBPACK_IMPORTED_MODULE_1_three__["l" /* Scene */]();
+        this.camera = new __WEBPACK_IMPORTED_MODULE_1_three__["i" /* PerspectiveCamera */](75, window.innerWidth / window.innerHeight, 1, 10000);
+        this.camera.position.z = 1000;
+        var geometry = new __WEBPACK_IMPORTED_MODULE_1_three__["b" /* BoxGeometry */](200, 200, 200);
+        var material = new __WEBPACK_IMPORTED_MODULE_1_three__["g" /* MeshBasicMaterial */]({ color: 0xff0000, wireframe: true });
+        this.mesh = new __WEBPACK_IMPORTED_MODULE_1_three__["f" /* Mesh */](geometry, material);
+        this.scene.add(this.mesh);
+    }
+    BoxPage.prototype.ngAfterViewInit = function () {
+        this.renderer.setSize(window.innerWidth, window.innerHeight);
+        this.rendererContainer.nativeElement.appendChild(this.renderer.domElement);
+        this.animate();
+    };
+    BoxPage.prototype.animate = function () {
+        var _this = this;
+        window.requestAnimationFrame(function () { return _this.animate(); });
+        this.mesh.rotation.x += 0.01;
+        this.mesh.rotation.y += 0.02;
+        this.renderer.render(this.scene, this.camera);
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])('rendererContainer'),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* ElementRef */])
+    ], BoxPage.prototype, "rendererContainer", void 0);
+    BoxPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'page-box',template:/*ion-inline-start:"E:\ionic\shin-ionic\src\pages\box\box.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>ThreeJS Box</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <!-- <ion-card>\n      <div #rendererContainer></div>\n  </ion-card> -->\n\n  <flash-card>\n    <div class="fc-front">    \n      <h2 text-center>3D Model with Flash Card</h2>\n      <p>Description: 3D Model Rotation Animation Test</p>\n      <p>Start testing by clicking here</p>\n    </div>\n    <div class="fc-back">\n      <div #rendererContainer></div>\n    </div>\n  </flash-card>\n\n  <!-- <div #rendererContainer></div> -->\n</ion-content>'/*ion-inline-end:"E:\ionic\shin-ionic\src\pages\box\box.html"*/
+        }),
+        __metadata("design:paramtypes", [])
+    ], BoxPage);
+    return BoxPage;
+}());
+
+//# sourceMappingURL=box.js.map
+
+/***/ }),
+
+/***/ 157:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ChartPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_chart_js__ = __webpack_require__(577);
@@ -408,68 +470,6 @@ var ChartPage = (function () {
 
 /***/ }),
 
-/***/ 157:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BoxPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_three__ = __webpack_require__(387);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-//import { dat } from 'dat.gui';
-var BoxPage = (function () {
-    function BoxPage() {
-        this.renderer = new __WEBPACK_IMPORTED_MODULE_1_three__["p" /* WebGLRenderer */]();
-        this.scene = null;
-        this.camera = null;
-        this.mesh = null;
-        this.scene = new __WEBPACK_IMPORTED_MODULE_1_three__["l" /* Scene */]();
-        this.camera = new __WEBPACK_IMPORTED_MODULE_1_three__["i" /* PerspectiveCamera */](75, window.innerWidth / window.innerHeight, 1, 10000);
-        this.camera.position.z = 1000;
-        var geometry = new __WEBPACK_IMPORTED_MODULE_1_three__["b" /* BoxGeometry */](200, 200, 200);
-        var material = new __WEBPACK_IMPORTED_MODULE_1_three__["g" /* MeshBasicMaterial */]({ color: 0xff0000, wireframe: true });
-        this.mesh = new __WEBPACK_IMPORTED_MODULE_1_three__["f" /* Mesh */](geometry, material);
-        this.scene.add(this.mesh);
-    }
-    BoxPage.prototype.ngAfterViewInit = function () {
-        this.renderer.setSize(window.innerWidth, window.innerHeight);
-        this.rendererContainer.nativeElement.appendChild(this.renderer.domElement);
-        this.animate();
-    };
-    BoxPage.prototype.animate = function () {
-        var _this = this;
-        window.requestAnimationFrame(function () { return _this.animate(); });
-        this.mesh.rotation.x += 0.01;
-        this.mesh.rotation.y += 0.02;
-        this.renderer.render(this.scene, this.camera);
-    };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])('rendererContainer'),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* ElementRef */])
-    ], BoxPage.prototype, "rendererContainer", void 0);
-    BoxPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-box',template:/*ion-inline-start:"E:\ionic\shin-ionic\src\pages\box\box.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>ThreeJS Box</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <!-- <ion-card>\n      <div #rendererContainer></div>\n  </ion-card> -->\n\n  <flash-card>\n    <div class="fc-front">    \n      <h2 text-center>3D Model with Flash Card</h2>\n      <p>Description: 3D Model Rotation Animation Test</p>\n      <p>Start testing by clicking here</p>\n    </div>\n    <div class="fc-back">\n      <div #rendererContainer></div>\n    </div>\n  </flash-card>\n\n  <!-- <div #rendererContainer></div> -->\n</ion-content>'/*ion-inline-end:"E:\ionic\shin-ionic\src\pages\box\box.html"*/
-        }),
-        __metadata("design:paramtypes", [])
-    ], BoxPage);
-    return BoxPage;
-}());
-
-//# sourceMappingURL=box.js.map
-
-/***/ }),
-
 /***/ 158:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -491,18 +491,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var EventPage = (function () {
     function EventPage(navParams) {
         this.navParams = navParams;
-        this.place = 'City hall';
-        this.latData = 52.130889;
-        this.lngData = -106.660233;
         this.item = navParams.get('item');
         var dataString = this.item.place;
-        var data = dataString.split(',');
-        if (data[0] !== '') {
-            this.place = data[0];
+        if (dataString === null || dataString === undefined || dataString === '') {
+            this.place = 'City hall';
+            this.latData = 52.130889;
+            this.lngData = -106.660233;
         }
-        if (data[1] !== '' && data[2] !== '') {
-            this.latData = Number(data[1]);
-            this.lngData = Number(data[2]);
+        else {
+            var data = dataString.split(',');
+            if (data[0] !== '') {
+                this.place = data[0];
+            }
+            if (data[1] !== '' && data[2] !== '') {
+                this.latData = Number(data[1]);
+                this.lngData = Number(data[2]);
+            }
         }
     }
     EventPage.prototype.ionViewDidLoad = function () {
@@ -537,7 +541,7 @@ var EventPage = (function () {
     ], EventPage.prototype, "mapElement", void 0);
     EventPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-event',template:/*ion-inline-start:"E:\ionic\shin-ionic\src\pages\contact\event\event.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>Event Information</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n\n  <ion-card>\n    <img *ngIf="item.imageUrl"  [src]="item.imageUrl" />\n    <ion-card-content>\n      <h2 class="card-title">{{item.name}}</h2>\n      <p>Place: {{place}}</p>\n      <p>Date: {{item.date}}</p>\n      <p>Description: {{item.description}}</p>\n    </ion-card-content>\n  </ion-card>\n\n  <h2>{{place}}</h2>\n  <div #map id="map"></div>\n</ion-content>'/*ion-inline-end:"E:\ionic\shin-ionic\src\pages\contact\event\event.html"*/
+            selector: 'page-event',template:/*ion-inline-start:"E:\ionic\shin-ionic\src\pages\contact\event\event.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>Event Information</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n\n  <ion-card>\n    <ion-card-content>\n      <img *ngIf="item.imageUrl"  [src]="item.imageUrl" />\n      <h2 class="card-title">{{item.name}}</h2>\n      <p>Place: {{place}}</p>\n      <p>Date: {{item.date}}</p>\n      <p>Description: {{item.description}}</p>\n    </ion-card-content>\n  </ion-card>\n\n  <h2>{{place}}</h2>\n  <div #map id="map"></div>\n</ion-content>'/*ion-inline-end:"E:\ionic\shin-ionic\src\pages\contact\event\event.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
     ], EventPage);
@@ -813,10 +817,12 @@ var StoragePage = (function () {
         this.db = db;
         this.alertCtrl = alertCtrl;
         this.basePath = 'shin/uploads';
-        this.uploadItems = this.db.list(this.basePath + "/").valueChanges();
+        this.folder = 'song';
+        this.uploadItems = this.db.list(this.basePath + "/" + this.folder + "/").valueChanges();
     }
-    StoragePage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad StoragePage');
+    StoragePage.prototype.segmentChanged = function () {
+        console.log('segmentChanged =', this.folder);
+        this.uploadItems = this.db.list(this.basePath + "/" + this.folder + "/").valueChanges();
     };
     StoragePage.prototype.handleFiles = function (event) {
         this.files = event.target.files;
@@ -832,7 +838,7 @@ var StoragePage = (function () {
             // console.log(filesToUpload[idx]);
             _this.upload = new __WEBPACK_IMPORTED_MODULE_2__models_upload_model__["a" /* Upload */](filesToUpload[idx]);
             var storageRef = __WEBPACK_IMPORTED_MODULE_5_firebase_app__["storage"]().ref();
-            var uploadTask = storageRef.child(_this.basePath + "/" + _this.upload.file.name)
+            var uploadTask = storageRef.child(_this.basePath + "/" + _this.folder + "/" + _this.upload.file.name)
                 .put(_this.upload.file);
             loader.present();
             uploadTask.on(__WEBPACK_IMPORTED_MODULE_5_firebase_app__["storage"].TaskEvent.STATE_CHANGED, 
@@ -859,8 +865,8 @@ var StoragePage = (function () {
         });
     };
     StoragePage.prototype.saveFileData = function (upload) {
-        var key = this.db.list(this.basePath + "/").push(upload).key;
-        var path = this.basePath + "/" + key;
+        var key = this.db.list(this.basePath + "/" + this.folder + "/").push(upload).key;
+        var path = this.basePath + "/" + this.folder + "/" + key;
         var data = {
             id: key
         };
@@ -871,14 +877,14 @@ var StoragePage = (function () {
     StoragePage.prototype.deleteItem = function (item) {
         console.log(item);
         //delete data in list
-        var path = this.basePath + "/" + item.id;
+        var path = this.basePath + "/" + this.folder + "/" + item.id;
         this.db.object(path).remove().then(function (res) {
             console.log('Data deleted from database! ' + item.name);
         }).catch(function (err) {
             console.log(err);
         });
         //delete file in storage
-        var storageRef = __WEBPACK_IMPORTED_MODULE_5_firebase_app__["storage"]().ref().child(this.basePath + "/" + item.name);
+        var storageRef = __WEBPACK_IMPORTED_MODULE_5_firebase_app__["storage"]().ref().child(this.basePath + "/" + this.folder + "/" + item.name);
         storageRef.delete().then(function (snapshot) {
             console.log('File deleted from storage!: ' + item.name);
         }).catch(function (err) {
@@ -893,7 +899,7 @@ var StoragePage = (function () {
     };
     StoragePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-storage',template:/*ion-inline-start:"E:\ionic\shin-ionic\src\pages\storage\storage.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>Storage</ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n  <div class="container">\n    <div *ngIf="upload">\n      <div class="progress">\n        <div class="progress-bar progress-bar-animated" \n        [ngStyle]="{ \'width\': upload?.progress + \'%\' }"></div>\n      </div>\n      Progress: {{upload?.progress}}% Complete\n    </div>\n    <div class="container">\n      <input type="file" (change)="handleFiles($event)" multiple>\n      <button ion-button color="secondary" small (click)="uploadFiles()">\n        <ion-icon name="cloud-upload"></ion-icon>\n      </button>\n    </div>\n  </div>\n\n  <ion-list>\n    <ion-item-sliding *ngFor="let item of uploadItems | async">\n      <ion-item>\n        <ion-avatar item-start>\n          <img [src]="item.url" />\n        </ion-avatar>\n        <ion-icon name="download"></ion-icon>\n        <a href="{{item.url}}" download>{{item.name}}</a>\n      </ion-item>\n      <ion-item-options>\n        <button ion-button color="danger" (click)="deleteItem(item)">\n          <ion-icon name="trash"></ion-icon>\n        </button>\n      </ion-item-options>\n    </ion-item-sliding>\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"E:\ionic\shin-ionic\src\pages\storage\storage.html"*/,
+            selector: 'page-storage',template:/*ion-inline-start:"E:\ionic\shin-ionic\src\pages\storage\storage.html"*/'<ion-header>\n  <ion-toolbar>\n    <ion-segment [(ngModel)]="folder" color="danger" (ionChange)="segmentChanged($event)">\n      <ion-segment-button value="song">\n        Song\n      </ion-segment-button>\n      <ion-segment-button value="business">\n        Business\n      </ion-segment-button>\n      <ion-segment-button value="others">\n        Others\n      </ion-segment-button>\n    </ion-segment>\n  </ion-toolbar>\n</ion-header>\n\n\n<ion-content padding>\n  <div class="container">\n    <div *ngIf="upload">\n      <div class="progress">\n        <div class="progress-bar progress-bar-animated" \n        [ngStyle]="{ \'width\': upload?.progress + \'%\' }"></div>\n      </div>\n      Progress: {{upload?.progress}}% Complete\n    </div>\n    <div class="container">\n      <input type="file" (change)="handleFiles($event)" multiple>\n      <button ion-button color="secondary" small (click)="uploadFiles()">\n        <ion-icon name="cloud-upload"></ion-icon>\n      </button>\n    </div>\n  </div>\n\n  <ion-list>\n    <ion-item-sliding *ngFor="let item of uploadItems | async">\n      <ion-item>\n        <ion-avatar item-start>\n          <img [src]="item.url" />\n        </ion-avatar>\n        <ion-icon name="download"></ion-icon>\n        <a href="{{item.url}}" download>{{item.name}}</a>\n      </ion-item>\n      <ion-item-options>\n        <button ion-button color="danger" (click)="deleteItem(item)">\n          <ion-icon name="trash"></ion-icon>\n        </button>\n      </ion-item-options>\n    </ion-item-sliding>\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"E:\ionic\shin-ionic\src\pages\storage\storage.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */],
@@ -915,7 +921,7 @@ var StoragePage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__box_place_box_place__ = __webpack_require__(155);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__box_box__ = __webpack_require__(157);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__box_box__ = __webpack_require__(156);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__map_map__ = __webpack_require__(159);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -979,10 +985,6 @@ webpackEmptyAsyncContext.id = 173;
 
 var map = {
 	"../pages/about/edit-user/edit-user.module": [
-		681,
-		9
-	],
-	"../pages/about/newyear/newyear.module": [
 		682,
 		8
 	],
@@ -992,18 +994,18 @@ var map = {
 	],
 	"../pages/box-place/box-place.module": [
 		684,
-		16
-	],
-	"../pages/box/box.module": [
-		687,
 		15
 	],
-	"../pages/chart/chart.module": [
+	"../pages/box/box.module": [
 		685,
 		14
 	],
-	"../pages/contact/create-event/create-event.module": [
+	"../pages/chart/chart.module": [
 		686,
+		13
+	],
+	"../pages/contact/create-event/create-event.module": [
+		687,
 		6
 	],
 	"../pages/contact/edit-event/edit-event.module": [
@@ -1012,7 +1014,7 @@ var map = {
 	],
 	"../pages/contact/event/event.module": [
 		689,
-		13
+		12
 	],
 	"../pages/home/create-song/create-song.module": [
 		690,
@@ -1036,15 +1038,15 @@ var map = {
 	],
 	"../pages/map/map.module": [
 		695,
-		12
+		11
 	],
 	"../pages/storage/storage.module": [
 		696,
-		11
+		10
 	],
 	"../pages/three1/three1.module": [
 		697,
-		10
+		9
 	]
 };
 function webpackAsyncContext(req) {
@@ -1074,7 +1076,7 @@ module.exports = webpackAsyncContext;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__home_home__ = __webpack_require__(447);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__storage_storage__ = __webpack_require__(160);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__three1_three1__ = __webpack_require__(161);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__chart_chart__ = __webpack_require__(156);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__chart_chart__ = __webpack_require__(157);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1122,6 +1124,7 @@ var TabsPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_moment__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__models_monthly_model__ = __webpack_require__(679);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1135,15 +1138,52 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var AboutPage = (function () {
     function AboutPage(db, modalCtrl) {
+        var _this = this;
         this.db = db;
         this.modalCtrl = modalCtrl;
         this.userPath = 'shin/users';
         this.payPath = 'shin/pays';
-        this.users = this.db.list(this.userPath + "/").valueChanges();
         this.yearPay = __WEBPACK_IMPORTED_MODULE_3_moment___default()(new Date()).format('YYYY');
+        this.db.list(this.userPath + "/").valueChanges().subscribe(function (res) {
+            _this.users = [];
+            res.forEach(function (rs) {
+                var user = rs;
+                _this.users.push({
+                    uid: user.uid,
+                    email: user.email,
+                    displayName: user.displayName,
+                    imageUrl: user.imageUrl,
+                    count: 0
+                });
+            });
+        });
+        this.loadingData();
     }
+    AboutPage.prototype.loadingData = function () {
+        var _this = this;
+        this.db.list(this.payPath + "/" + this.yearPay + "/").valueChanges().subscribe(function (res) {
+            res.forEach(function (rs1) {
+                var count = 0;
+                var pay = rs1;
+                Object.keys(pay.monthly).map(function (index) {
+                    var monthly = new __WEBPACK_IMPORTED_MODULE_4__models_monthly_model__["a" /* Monthly */];
+                    monthly = pay.monthly[index];
+                    if (monthly.date !== '') {
+                        count++;
+                    }
+                });
+                //console.log('user=', pay.userid, ', count=', count);
+                var check = _this.users.filter(function (item) { return item.uid === pay.userid; });
+                if (check.length > 0) {
+                    check[0].count = count;
+                    //console.log('found user=', pay.userid, ', count=', count);
+                }
+            });
+        });
+    };
     AboutPage.prototype.userTapped = function (event, user) {
         var payModal = this.modalCtrl.create('PayPage', { user: user, yearPay: this.yearPay }, { cssClass: 'inset-modal' });
         payModal.onDidDismiss(function (data) {
@@ -1162,25 +1202,34 @@ var AboutPage = (function () {
         });
         editUserModel.present();
     };
-    AboutPage.prototype.newYear = function () {
+    AboutPage.prototype.doView = function () {
         var _this = this;
-        var data = this.db.list(this.payPath + "/" + this.yearPay + "/").valueChanges();
-        data.subscribe(function (rs) {
+        this.db.list(this.payPath + "/" + this.yearPay + "/").valueChanges().subscribe(function (rs) {
             console.log('re.length=', rs.length);
             if (rs.length < 1) {
-                var newYearModal = _this.modalCtrl.create('NewYearPage', { yearPay: _this.yearPay }, { cssClass: 'inset-modal' });
-                newYearModal.onDidDismiss(function (data) {
-                    if (data) {
-                        //this.items.add(data);
-                    }
+                var monthly_1 = [];
+                for (var i = 0; i < 12; i++) {
+                    monthly_1.push({ date: '' });
+                }
+                _this.users.forEach(function (user) {
+                    var data = {
+                        userid: user.uid,
+                        monthly: monthly_1
+                    };
+                    var key = _this.db.list(_this.payPath + "/" + _this.yearPay + "/").push(data).key;
+                    var dataKey = {
+                        id: key
+                    };
+                    _this.db.object(_this.payPath + "/" + _this.yearPay + "/" + key + "/").update(dataKey)
+                        .catch(function (error) { return console.log(error); });
                 });
-                newYearModal.present();
             }
         });
+        this.loadingData();
     };
     AboutPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-about',template:/*ion-inline-start:"E:\ionic\shin-ionic\src\pages\about\about.html"*/'<ion-header>\n    <ion-navbar>\n      <ion-title>User List</ion-title>\n    </ion-navbar>\n  </ion-header>\n  \n  <ion-content>\n    <ion-item>\n      <ion-icon name="calendar" item-start></ion-icon>\n      <ion-label>Year</ion-label>\n      <ion-datetime displayFormat="YYYY" max="2050" [(ngModel)]="yearPay"></ion-datetime>\n    </ion-item>\n    <!-- <button ion-button (click)="newYear()">New Year</button> -->\n      \n\n    <ion-list>\n      <ion-item-sliding *ngFor="let user of users | async">\n        <button ion-item (click)="userTapped($event, user)">\n          <ion-avatar item-start>\n            <img *ngIf="user.imageUrl" [src]="user.imageUrl" />\n          </ion-avatar>\n          <h2>{{user.displayName}}</h2>\n        </button>\n        <ion-item-options>\n          <button ion-button clear small color="secondary" icon-left (click)="userEdit(user)">\n            <ion-icon name=\'create\'></ion-icon>\n          </button>\n        </ion-item-options>\n      </ion-item-sliding>\n    </ion-list>\n  </ion-content>'/*ion-inline-end:"E:\ionic\shin-ionic\src\pages\about\about.html"*/
+            selector: 'page-about',template:/*ion-inline-start:"E:\ionic\shin-ionic\src\pages\about\about.html"*/'<ion-header>\n    <ion-navbar>\n      <ion-title>User List</ion-title>\n    </ion-navbar>\n  </ion-header>\n  \n  <ion-content>\n    <ion-item>\n      <ion-icon name="calendar" item-start></ion-icon>\n      <ion-label>Year</ion-label>\n      <ion-datetime displayFormat="YYYY" max="2050" [(ngModel)]="yearPay" (ngModelChange)="doView()"></ion-datetime>\n    </ion-item>    \n\n    <ion-list>\n      <ion-item-sliding *ngFor="let user of users">\n        <button ion-item (click)="userTapped($event, user)">\n          <ion-avatar item-start>\n            <img *ngIf="user.imageUrl" [src]="user.imageUrl" />\n          </ion-avatar>\n          <h2>{{user.displayName}}</h2>\n          <ion-note item-end>{{user.count}}/12</ion-note>\n        </button>\n        <ion-item-options>\n          <button ion-button clear small color="secondary" icon-left (click)="userEdit(user)">\n            <ion-icon name=\'create\'></ion-icon>\n          </button>\n        </ion-item-options>\n      </ion-item-sliding>\n    </ion-list>\n  </ion-content>'/*ion-inline-end:"E:\ionic\shin-ionic\src\pages\about\about.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ModalController */]])
@@ -1240,13 +1289,6 @@ var ContactPage = (function () {
     };
     ContactPage.prototype.itemTapped = function (event, item) {
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__event_event__["a" /* EventPage */], { item: item });
-        // let itemModel = this.modalCtrl.create('EventPage', {item: item}, { cssClass: 'inset-modal' });
-        // itemModel.onDidDismiss(data => {
-        //   if (data) {
-        //     //console.log("test1111");
-        //   }
-        // });
-        // itemModel.present();
     };
     ContactPage.prototype.editItem = function (item) {
         var editModel = this.modalCtrl.create('EditEventPage', { item: item, yearPay: this.yearPay }, { cssClass: 'inset-modal' });
@@ -1263,7 +1305,7 @@ var ContactPage = (function () {
     };
     ContactPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-contact',template:/*ion-inline-start:"E:\ionic\shin-ionic\src\pages\contact\contact.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>Event List</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="loadingData()">\n        <ion-icon name=\'star\'></ion-icon>\n      </button>\n      <button ion-button icon-only (click)="createItem()">\n        <ion-icon name="add"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-item>\n    <ion-icon name="calendar" item-start></ion-icon>\n    <ion-label>Year</ion-label>\n    <ion-datetime displayFormat="YYYY" max="2050" [(ngModel)]="yearPay"></ion-datetime>\n  </ion-item>\n\n  <ion-list>\n    <ion-item-sliding *ngFor="let item of items | async">\n      <button ion-item (click)="itemTapped($event, item)">\n        <ion-avatar item-start>\n          <img *ngIf="item.imageUrl" [src]="item.imageUrl" />\n        </ion-avatar>\n        <h2>{{item.name}}</h2>\n        <p item-end>{{item.date}}</p>\n      </button>\n      <ion-item-options>\n        <button ion-button clear small color="danger" icon-left (click)="deleteItem(item)">\n          <ion-icon name=\'trash\'></ion-icon>\n        </button>\n        <button ion-button clear small color="secondary" icon-left (click)="editItem(item)">\n          <ion-icon name=\'create\'></ion-icon>\n        </button>\n      </ion-item-options>\n    </ion-item-sliding>\n  </ion-list>\n</ion-content>'/*ion-inline-end:"E:\ionic\shin-ionic\src\pages\contact\contact.html"*/
+            selector: 'page-contact',template:/*ion-inline-start:"E:\ionic\shin-ionic\src\pages\contact\contact.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>Event List</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="createItem()">\n        <ion-icon name="add"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-item>\n    <ion-icon name="calendar" item-start></ion-icon>\n    <ion-label>Year</ion-label>\n    <ion-datetime displayFormat="YYYY" max="2050" [(ngModel)]="yearPay" (ngModelChange)="loadingData()"></ion-datetime>\n  </ion-item>\n\n  <ion-list>\n    <ion-item-sliding *ngFor="let item of items | async">\n      <button ion-item (click)="itemTapped($event, item)">\n        <ion-avatar item-start>\n          <img *ngIf="item.imageUrl" [src]="item.imageUrl" />\n        </ion-avatar>\n        <h2>{{item.name}}</h2>\n        <p item-end>{{item.date}}</p>\n      </button>\n      <ion-item-options>\n        <button ion-button clear small color="danger" icon-left (click)="deleteItem(item)">\n          <ion-icon name=\'trash\'></ion-icon>\n        </button>\n        <button ion-button clear small color="secondary" icon-left (click)="editItem(item)">\n          <ion-icon name=\'create\'></ion-icon>\n        </button>\n      </ion-item-options>\n    </ion-item-sliding>\n  </ion-list>\n</ion-content>'/*ion-inline-end:"E:\ionic\shin-ionic\src\pages\contact\contact.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ModalController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
@@ -1521,9 +1563,9 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(670);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_map_map__ = __webpack_require__(159);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_chart_chart__ = __webpack_require__(156);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_chart_chart__ = __webpack_require__(157);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_contact_event_event__ = __webpack_require__(158);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_box_box__ = __webpack_require__(157);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_box_box__ = __webpack_require__(156);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_box_place_box_place__ = __webpack_require__(155);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_three1_three1__ = __webpack_require__(161);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_storage_storage__ = __webpack_require__(160);
@@ -1538,9 +1580,9 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19_angularfire2_auth__ = __webpack_require__(394);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__providers_auth_auth__ = __webpack_require__(154);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__angular_http__ = __webpack_require__(396);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__ionic_native_youtube_video_player__ = __webpack_require__(679);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__ionic_native_youtube_video_player__ = __webpack_require__(680);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__providers_yt_yt__ = __webpack_require__(449);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__pipes_moment_moment__ = __webpack_require__(680);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__pipes_moment_moment__ = __webpack_require__(681);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__components_flash_card_flash_card__ = __webpack_require__(448);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1617,12 +1659,11 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["d" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* MyApp */], {}, {
                     links: [
                         { loadChildren: '../pages/about/edit-user/edit-user.module#EditUserPageModule', name: 'EditUserPage', segment: 'edit-user', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/about/newyear/newyear.module#NewYearPageModule', name: 'NewYearPage', segment: 'newyear', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/about/pay/pay.module#PayPageModule', name: 'PayPage', segment: 'pay', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/box-place/box-place.module#BoxPlacePageModule', name: 'BoxPlacePage', segment: 'box-place', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/box/box.module#BoxPageModule', name: 'BoxPage', segment: 'box', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/chart/chart.module#ChartPageModule', name: 'ChartPage', segment: 'chart', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/contact/create-event/create-event.module#CreateEventPageModule', name: 'CreateEventPage', segment: 'create-event', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/box/box.module#BoxPageModule', name: 'BoxPage', segment: 'box', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/contact/edit-event/edit-event.module#EditEventPageModule', name: 'EditEventPage', segment: 'edit-event', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/contact/event/event.module#EventPageModule', name: 'EventPage', segment: 'event', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/home/create-song/create-song.module#CreateSongPageModule', name: 'CreateSongPage', segment: 'create-song', priority: 'low', defaultHistory: [] },
@@ -2003,7 +2044,22 @@ var MyApp = (function () {
 
 /***/ }),
 
-/***/ 680:
+/***/ 679:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Monthly; });
+var Monthly = (function () {
+    function Monthly() {
+    }
+    return Monthly;
+}());
+
+//# sourceMappingURL=monthly.model.js.map
+
+/***/ }),
+
+/***/ 681:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

@@ -7,8 +7,8 @@
 <ion-content>
 
   <ion-card>
-    <img *ngIf="item.imageUrl"  [src]="item.imageUrl" />
     <ion-card-content>
+      <img *ngIf="item.imageUrl"  [src]="item.imageUrl" />
       <h2 class="card-title">{{item.name}}</h2>
       <p>Place: {{place}}</p>
       <p>Date: {{item.date}}</p>
