@@ -3,6 +3,7 @@ import { IonicPage, NavController } from 'ionic-angular';
 import { BoxPlacePage } from '../box-place/box-place';
 import { BoxPage } from '../box/box';
 import { MapPage } from '../map/map';
+import { GpsPage } from '../gps/gps';
 
 @IonicPage()
 @Component({
@@ -26,4 +27,7 @@ export class Three1Page {
     this.navCtrl.push(MapPage, null);
   }
 
+  goToGPS() {
+    this.navCtrl.push(GpsPage, null);
+  }
 }

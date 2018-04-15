@@ -1,6 +1,6 @@
-# Ionic Application for Living Sky TaikoIonic
+# Ionic Application to show Shin's work
 
-This is an Ionic App with TapeScript for a taiko Japanese drum club. It is still in development.
+This is an Ionic App with TapeScript by Shin. It is still in development.
 
 
 ## Table of Contents
@@ -116,6 +116,14 @@ _Note: You may need to add “sudo” in front of any global commands to install
 
 ## chart
 * Run `npm install --save chart.js`
+
+## Geolocation
+* $ ionic cordova plugin add cordova-plugin-geolocation@latest
+* $ npm install --save @ionic-native/geolocation
+
+* $ ionic cordova plugin add cordova-plugin-mauron85-background-geolocation
+* $ npm install --save @ionic-native/background-geolocation
+
 
 ## Database Structure of Firebase
 

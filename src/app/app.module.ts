@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
+import { TrackingPage } from '../pages/tracking/tracking';
+import { GpsPage } from '../pages/gps/gps';
 import { MapPage } from '../pages/map/map';
 import { ChartPage } from '../pages/chart/chart';
 import { EventPage } from '../pages/contact/event/event';
@@ -39,6 +41,10 @@ import { YtProvider } from '../providers/yt/yt';
 import { MomentPipe } from '../pipes/moment/moment';
 //components
 import { FlashCardComponent } from '../components/flash-card/flash-card';
+//geolocation
+import { Geolocation } from '@ionic-native/geolocation';
+import { BackgroundGeolocation } from "@ionic-native/background-geolocation";
+import { LocationTrackerProvider } from '../providers/location-tracker/location-tracker';
 
 @NgModule({
   declarations: [
@@ -55,7 +61,9 @@ import { FlashCardComponent } from '../components/flash-card/flash-card';
     FlashCardComponent,
     EventPage,
     ChartPage,
-    MapPage
+    MapPage,
+    GpsPage,
+    TrackingPage
   ],
   imports: [
     BrowserModule,
@@ -80,7 +88,9 @@ import { FlashCardComponent } from '../components/flash-card/flash-card';
     EventPage,
     TabsPage,
     ChartPage,
-    MapPage
+    MapPage,
+    GpsPage,
+    TrackingPage
   ],
   providers: [
     StatusBar,
@@ -88,7 +98,10 @@ import { FlashCardComponent } from '../components/flash-card/flash-card';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     YoutubeVideoPlayer,
     AuthProvider,
-    YtProvider
+    YtProvider,
+    Geolocation,
+    BackgroundGeolocation,
+    LocationTrackerProvider
   ],
   exports: [
     MomentPipe,

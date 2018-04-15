@@ -1,0 +1,58 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>GPS Tracking</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <p>Current: {{locationTracker.lat}}, {{locationTracker.lng}}</p>
+  <button ion-button color="danger" (click)="start()">Start Tracking</button>
+  <button ion-button color="light" (click)="startTimer()">Start Timer</button>
+  <button ion-button color="secondary" (click)="stop()">Stop Tracking</button>
+  <div #map id="map"></div>
+  <ion-list>
+    <ion-item>
+      <ion-label> Auto Save </ion-label>
+      <ion-toggle [(ngModel)]="autoSave" (click)="autoSave()"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label> Interval(s) </ion-label>
+      <ion-select [(ngModel)]="interval">
+        <ion-option value=5>5</ion-option>
+        <ion-option value=10>10</ion-option>
+        <ion-option value=20>20</ion-option>
+        <ion-option value=50>50</ion-option>
+        <ion-option value=100>100</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label> Line Color </ion-label>
+      <ion-select [(ngModel)]="lineColor">
+        <ion-option value="#FF0000">Red</ion-option>
+        <ion-option value="#488AFF">Blue</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <p>GPS Tracking List:</p>
+  <ion-list>
+    <ion-item-sliding *ngFor="let tracking of trackings | async">
+      <button ion-item (click)="trackTapped($event, tracking)">
+        <h2>{{tracking.name}}</h2>
+        <p item-end>{{tracking.date}}</p>
+      </button>
+      <ion-item-options>
+        <button ion-button clear small color="danger" icon-left (click)="deleteTrack(tracking)">
+          <ion-icon name='trash'></ion-icon>
+        </button>
+        <button ion-button clear small color="secondary" icon-left (click)="editTrack(tracking)">
+          <ion-icon name='create'></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+
+</ion-content>
